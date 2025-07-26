@@ -34,3 +34,5 @@ defaults:
       type: post
     values:
       tags: Other
+
+# Trigger: Copilot agent test - 2025-07-26
