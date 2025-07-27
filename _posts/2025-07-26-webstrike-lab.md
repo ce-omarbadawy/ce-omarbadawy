@@ -5,7 +5,7 @@ date: 2025-07-26
 categories: ["Practice", "SOC Analyst Tier 1", "Level 1"]
 tags: ["Network Forensics", "Initial Access", "Execution", "Persistence", "Command and Control", "Exfiltration", "Wireshark", "CyberDefenders"]
 ---
-
+# First Lab: WebStrike at CyberDefenders
 ## Contents
 - [First Impressions](#first-impressions)
 - [Lab Setup and Tools Used](#lab-setup-and-tools-used)
