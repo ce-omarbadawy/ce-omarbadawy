@@ -1,5 +1,1 @@
-Here you can say lots of fun things about your site.
-
-Maybe say a some things about yourself.
-
-Or maybe what you plan to blog about.
+Detail-oriented Cybersecurity and Ethical hacking professional. A member of the Board of Engineering Malaysia (BEM), a Computer Engineer with proven leadership and organizational skills, completed several courses in the field. Knowledgeable on multiple security frameworks and able to implement security controls to ensure compliance with international regulations related to data protection. Experienced with identifying threats, risks, and vulnerabilities. Proficient in various platforms such as Kali Linux, Windows, VS Code (Python and C++), and many hacking tools. Passionate about Ethical Hacking, Cybersecurity, Software Development.
