@@ -1,6 +1,6 @@
 title: "Omar's Blog"
 author: "Eng. Omar Badawy"
-description: "Doing what I love ♥️." # This will show up in places like twitter, linkedin, etc, if you share your sites url as a post.
+description: "Doing what I love ♥️." # This will show up in places like social media, linkedin, etc, if you share your sites url as a post.
 
 # Email / Social media user names used by the minima theme:
 #Optional and can be removed or commented out
@@ -13,6 +13,9 @@ linkedin_username: "omar-m-badawy"
 ######### Nothing below needs to be changed (unless you know what you're doing) #########
 #########################################################################################
 theme: "minima"
+
+# Base URL for GitHub Pages project site
+baseurl: "/ce-omarbadawy"
 
 rss: rss
 
