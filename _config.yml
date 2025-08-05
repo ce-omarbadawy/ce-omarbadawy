@@ -34,6 +34,9 @@ titles_from_headings:
 defaults:
   - scope:
       path: ""
-      type: post
+      type: posts
     values:
       tags: Other
+
+static_files:
+  - assets/images/attachments/

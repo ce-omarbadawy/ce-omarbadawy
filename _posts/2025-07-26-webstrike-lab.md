@@ -52,7 +52,7 @@ So, I started by:
 
 I followed the HTTP stream and got this:
 
-![Wireshark stream: POST request to upload image.php rejected due to invalid file format.](https://github.com/ce-omarbadawy/ce-omarbadawy/blob/main/_posts/2025-07-26-webstrike-lab-attachments/image.png?raw=true)
+![Wireshark stream: POST request to upload "image.php" rejected due to invalid file format.](https://github.com/ce-omarbadawy/ce-omarbadawy/blob/main/assets/images/attachments/2025-07-26-webstrike-lab-attachments/webstrike-lab-wireshark-stream-failed-attempt.webp?raw=true)
 
 Nice. A failed upload, but it gave up key info: the attacker tried to upload image.php.
 
@@ -106,7 +106,7 @@ If the web server executes `.php` anywhere (including `/uploads/`), it's game ov
 
 Attacker just hits:
 
-```url
+```bash
 http://shoporoma.com/reviews/uploads/image.jpg.php
 ```
 This trick is **file extension double-dot bypass**. It works when:
@@ -154,7 +154,7 @@ Let's unwrap it:
 
 **Approach:** Here we are looking for the **web-accessible path** (the URL directory), not the literal `/var/www/html/` backend path., I filtered with:
 
-```wireshark
+```bash
 http.request.method == "GET"
 ```
 
