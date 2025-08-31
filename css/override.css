@@ -1,9 +1,97 @@
+/* ==============================
+    Override main.css styles with theme variables
+    - Used to apply theme variables to the main.css styles
+   ============================== */
+
+:root {
+  /* Light mode colors */
+  --background-color: #f4f3f2;
+  --text-color: #000000;
+  --link-color: #1a73e8;
+  --link-hover-color: #0000aa;
+  --button-color: #5c5b5b;
+  --button-bg-color: #9797976b;
+  --header-footer-bg: #e6e6e6;
+  --code-border-color: #e8e8e8;
+}
+
+[data-theme="dark"] {
+  /* Dark mode colors */
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --link-color: #8ab4f8;
+  --link-hover-color: #d0e0ff;
+  --button-color: #9e9e9e;
+  --button-bg-color: #3a3a3a;
+  --header-footer-bg: #121212;
+  --code-border-color: #565f89;
+}
+
+.home-intro {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Override main.css code styles with theme variables */
+pre,
+code {
+  font-size: 15px;
+  border: 1px solid var(--code-border-color) !important;
+  border-radius: 3px;
+  background-color: var(--background-color) !important;
+}
+
+code {
+  padding: 1px 5px;
+}
+
+pre {
+  padding: 8px 12px;
+  overflow-x: auto;
+}
+
+pre > code {
+  border: 0 !important;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/* HLJS base styles */
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+
+code.hljs {
+  padding: 3px 5px;
+}
+
+/* Apply the variables */
+a:hover,
+a:focus {
+  color: var(--link-hover-color);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+header,
+footer {
+  background-color: var(--header-footer-bg);
+}
+
 hr {
   margin-top: 30px;
   margin-bottom: 20px;
 }
 
-/* Post navigation links */
 .post_navi {
   display: flex;
 }
@@ -42,4 +130,180 @@ hr {
   transform: translateY(-50%);
   font-size: 2.5em;
   opacity: 0.3;
+}
+
+.site-title,
+.page-link {
+  color: var(--text-color) !important;
+}
+
+.post-title {
+  color: var(--text-color);
+}
+
+header.post-header {
+  background-color: var(--background-color);
+}
+
+/* Mobile behavior: hide fixed toggle buttons, show menu items */
+@media screen and (max-width: 600px) {
+  #theme-toggle {
+    display: none !important;
+  }
+
+  #matrix-toggle {
+    display: none !important;
+  }
+
+  .theme-toggle-link,
+  .matrix-toggle-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center !important;
+  }
+
+  .theme-toggle-link img,
+  .matrix-toggle-link img {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  /* Make sure mobile menu respects theme variables */
+  .site-nav {
+    background-color: var(--background-color) !important;
+    border-color: var(--header-footer-bg) !important;
+    z-index: 1001 !important;
+    border: 1px solid var(--header-footer-bg);
+    border-radius: 8px;
+  }
+
+  .site-nav .trigger {
+    background-color: inherit;
+    z-index: 1002 !important;
+    position: relative;
+  }
+
+  .site-nav .menu-icon > svg {
+    fill: var(--text-color) !important;
+  }
+
+  .site-nav .page-link {
+    color: var(--text-color) !important;
+    z-index: 1003 !important;
+    position: relative;
+    background-color: var(--background-color);
+    border: 1px solid var(--header-footer-bg);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .site-nav .page-link:hover,
+  .site-nav .page-link:focus {
+    color: var(--link-hover-color) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Burger menu: add icon to the specific Archive link only */
+  .site-nav .trigger a.page-link[href$="/archive.html"] {
+    position: relative;
+    padding-left: 50px;
+  }
+
+  .site-nav .trigger a.page-link[href$="/archive.html"]::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("../assets/archives.svg") no-repeat center / contain;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.9;
+  }
+
+  /* Dark theme: ensure menu cards are visibly distinct */
+  [data-theme="dark"] .site-nav {
+    border-color: rgba(255, 255, 255, 0.24) !important;
+  }
+
+  [data-theme="dark"] .site-nav .page-link {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  }
+
+  [data-theme="dark"] .site-nav .page-link:hover,
+  [data-theme="dark"] .site-nav .page-link:focus {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+  }
+
+  .site-nav {
+    line-height: normal !important;
+    overflow: visible !important;
+  }
+
+  .site-nav input:checked ~ .trigger {
+    padding-bottom: 5px;
+  }
+
+  /* Center burger menu items and remove right-hugging */
+  .site-nav {
+    text-align: center !important;
+  }
+
+  .site-nav input:checked ~ .trigger {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+  }
+
+  .site-nav .page-link {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+/* Shared styles for floating round toggle buttons (header buttons) */
+#theme-toggle,
+#matrix-toggle {
+  background-color: var(--button-bg-color);
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, color 0.3s, transform 0.15s ease-in-out;
+}
+
+#theme-toggle:hover,
+#matrix-toggle:hover {
+  background-color: var(--button-color);
+  color: var(--background-color);
+  transform: translateY(-1px);
+}
+
+#theme-toggle:active,
+#matrix-toggle:active {
+  transform: translateY(0);
 }

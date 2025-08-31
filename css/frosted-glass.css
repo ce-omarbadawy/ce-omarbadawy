@@ -1,0 +1,106 @@
+/* ==============================
+   Frosted Glass
+   ============================== */
+
+/* Global frosted glass overlay */
+.frosted-glass-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Utility: any content marked with this class sits above the frosted glass */
+.content-layer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Frosted glass effect for main content areas */
+.page-content .wrapper {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.post-header {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+[data-theme="dark"] .post-header {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* Dark theme adjustments */
+[data-theme="dark"] .frosted-glass-overlay {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .page-content .wrapper {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Text readability tweaks */
+.post-title,
+.post-list-heading,
+.post-meta,
+.post-link,
+p,
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .post-title,
+[data-theme="dark"] .post-list-heading,
+[data-theme="dark"] .post-meta,
+[data-theme="dark"] .post-link,
+[data-theme="dark"] p,
+[data-theme="dark"] h1, 
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4, 
+[data-theme="dark"] h5, 
+[data-theme="dark"] h6 {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 800px) {
+  .page-content .wrapper {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .frosted-glass-overlay {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
+
+/* Background layers stay behind everything */
+canvas#c {
+  z-index: -2;
+}
+
+.matrix-overlay {
+  z-index: -1;
+}

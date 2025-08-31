@@ -15,11 +15,15 @@ layout: default
     line-height: 1;
     letter-spacing: -1px;
   }
+  p {
+    text-align: left;
+  }
 </style>
 
 <div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found 🙁</strong></p>
-  <p>The requested page could not be found.</p>
+  <h1>ERROR 404</h1>
+  <p><strong>> The page you are looking for is unavailable.</strong></p>
+  <p>> Please try to go <a href="javascript:history.back()">[back]</a> or <a href="{{ '/' | relative_url }}">[return to the homepage]</a>.</p>
+  <p>> Good luck.</p>
+</div>
 </div>

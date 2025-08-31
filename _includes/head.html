@@ -1,40 +1,128 @@
 <!-- Site build date: {{ "now" | date: "%FT%T%z" }} -->
 <head>
-  <meta name="google-site-verification" content="3ivWn6bEzJvvYhG2bBHcW_4cnF4IhGqpDNYmMWXAaLY" />
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="google-site-verification"
+    content="3ivWn6bEzJvvYhG2bBHcW_4cnF4IhGqpDNYmMWXAaLY"
+  />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Begin SEO -->
   {% seo %}
   <!-- End SEO -->
 
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/main.css">
-  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/override.css">
-  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/back-to-top.css">
+  <!-- If you are reading this, please don't judge my(not really, I used AI a lot) code. I'm open to feedback and suggestions. Thank you. -->
 
-  {% feed_meta %}
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ site.baseurl }}/assets/main.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ site.baseurl }}/css/override.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ site.baseurl }}/css/back-to-top.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ site.baseurl }}/css/theme-toggle.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ site.baseurl }}/css/matrix.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ site.baseurl }}/css/frosted-glass.css"
+  />
 
-  {% if jekyll.environment == 'production' and site.google_analytics -%}
+  {% feed_meta %} {% if jekyll.environment == 'production' and
+  site.google_analytics -%}
   <!-- Begin Google Analytics -->
   {% include google-analytics.html %}
   <!-- End Google Analytics -->
   {%- endif %}
 
   <!-- Begin highlight.js support -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/js/highlightjs/styles/github.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/js/highlightjs/styles/ssms.css" />
+  <link
+    id="tokyo-night-light"
+    rel="stylesheet"
+    href="{{ site.baseurl }}/js/highlightjs/styles/tokyo-night-light.css"
+  />
+  <link
+    id="tokyo-night-dark"
+    rel="stylesheet"
+    href="{{ site.baseurl }}/js/highlightjs/styles/tokyo-night-dark.css"
+    disabled
+  />
+  <script src="{{ site.baseurl }}/js/highlightjs/highlight.js"></script>
 
-  <script type="text/javascript" src="{{ site.baseurl }}/js/highlightjs/highlight.min.js"></script>
-
-  <script type="text/javascript" src="{{ site.baseurl }}/js/highlightjs/languages/plaintext.min.js"></script>
-  <script type="text/javascript" src="{{ site.baseurl }}/js/highlightjs/languages/bash.min.js"></script>
-  <script type="text/javascript" src="{{ site.baseurl }}/js/highlightjs/languages/http.min.js"></script>
-  <script type="text/javascript" src="{{ site.baseurl }}/js/highlightjs/languages/php.min.js"></script>
-  <script type="text/javascript" src="{{ site.baseurl }}/js/highlightjs/languages/json.min.js"></script>
-  <script type="text/javascript" src="{{ site.baseurl }}/js/highlightjs/languages/powershell.min.js"></script>
-  <script type="text/javascript" src="{{ site.baseurl }}/js/highlightjs/languages/tsql.min.js"></script>
-
-  <script type="text/javascript"> hljs.highlightAll(); </script>
+  <script>
+    hljs.configure({
+      languages: [
+        "bash",
+        "php",
+        "json",
+        "sql",
+        "http",
+        "plaintext",
+        "powershell",
+        "html",
+        "css",
+        "javascript",
+      ],
+    });
+    hljs.highlightAll();
+  </script>
   <!-- end highlight.js support -->
+
+  <!-- Theme toggle button -->
+  <button
+    id="theme-toggle"
+    title="Toggle Theme"
+    style="position: fixed; top: 70px; right: 50px; z-index: 1000"
+  >
+    <img
+      id="theme-icon"
+      src="{{ site.baseurl }}/assets/sun.svg"
+      alt="Toggle Theme"
+      style="width: 24px; height: 24px"
+    />
+  </button>
+
+  <!-- Matrix toggle button -->
+  <button
+    id="matrix-toggle"
+    title="Toggle Matrix"
+    style="position: fixed; top: 120px; right: 50px; z-index: 1000"
+  >
+    <img
+      id="matrix-icon"
+      src="{{ site.baseurl }}/assets/white_rabbit.svg"
+      alt="Toggle Matrix"
+      style="width: 24px; height: 24px"
+    />
+  </button>
+
+  <script>
+    window.__siteBaseUrl = "{{ site.baseurl }}";
+  </script>
+  <script src="{{ site.baseurl }}/js/theme-toggle.js"></script>
 </head>
+<body>
+  <!-- Back to top button -->
+  <button id="back-to-top" title="Go to top">↑</button>
+  <script src="{{ site.baseurl }}/js/back-to-top.js"></script>
+  <script src="{{ site.baseurl }}/js/hacker-scramble.js"></script>
+  <script src="{{ site.baseurl }}/js/matrix.js"></script>
+  <!-- ...existing body content... -->
+</body>
