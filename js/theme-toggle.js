@@ -49,6 +49,14 @@
     );
     setHLJSTheme(savedTheme);
 
+    // Notify matrix system of initial theme to ensure canvas is painted correctly
+    // Trying to fix the race condition where matrix paints before theme is set
+    try {
+      window.__matrixOnThemeChanged?.();
+    } catch (e) {
+      console.warn("Matrix theme change notification failed on init:", e);
+    }
+
     function switchTheme(next) {
       html.setAttribute("data-theme", next);
       localStorage.setItem("theme", next);
