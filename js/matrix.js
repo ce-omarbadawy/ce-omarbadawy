@@ -16,9 +16,9 @@
   function getMatrixEnabledState() {
     try {
       const saved = localStorage.getItem("matrixEnabled");
-      return saved === null ? true : saved === "true";
+      return saved === null ? false : saved === "true";
     } catch (e) {
-      return true;
+      return false;
     }
   }
 

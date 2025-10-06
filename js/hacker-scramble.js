@@ -24,7 +24,7 @@
   const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
-  let effectsEnabled = !reduceMotion;
+  let effectsEnabled = false; // Disabled by default
 
   function startScramble(targetEl, durationMs) {
     if (!targetEl || !effectsEnabled) return;
