@@ -4,15 +4,13 @@ title: "PortSwigger Lab: Username enumeration via response timing"
 date: 2025-08-01
 categories: ["PortSwigger", "Authentication Vulnerabilities"]
 tags:
-  [
-    "PortSwigger",
-    "Authentication Vulnerabilities",
-    "Vulnerabilities in password-based login",
-    "Username Enumeration",
-    "Brute Force",
-    "Turbo Intruder",
-    "Burp Suite",
-  ]
+  - "PortSwigger"
+  - "Authentication Vulnerabilities"
+  - "Vulnerabilities in password-based login"
+  - "Username Enumeration"
+  - "Brute Force"
+  - "Turbo Intruder"
+  - "Burp Suite"
 ---
 
 # PortSwigger Lab: Username Enumeration via Response Timing

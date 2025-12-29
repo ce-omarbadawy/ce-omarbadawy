@@ -4,18 +4,16 @@ title: "CyberDefenders Lab: Oski"
 date: 2025-07-27
 categories: ["CyberDefenders", "Practice", "SOC Analyst Tier 1", "Level 1"]
 tags:
-  [
-    "CyberDefenders",
-    "Threat Intel",
-    "Initial Access",
-    "Execution",
-    "Defence Evasion",
-    "Credential Access",
-    "Command and Control",
-    "Exfiltration",
-    "VirusTotal",
-    "Any.run",
-  ]
+  - "CyberDefenders"
+  - "Threat Intel"
+  - "Initial Access"
+  - "Execution"
+  - "Defence Evasion"
+  - "Credential Access"
+  - "Command and Control"
+  - "Exfiltration"
+  - "VirusTotal"
+  - "Any.run"
 ---
 
 ## Second Lab: Oski Malware at CyberDefenders

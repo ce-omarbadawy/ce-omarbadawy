@@ -4,15 +4,13 @@ title: "PortSwigger Lab: Broken Brute-Force Protection, IP Block"
 date: 2025-08-02
 categories: ["PortSwigger", "Authentication Vulnerabilities"]
 tags:
-  [
-    "PortSwigger",
-    "Authentication Vulnerabilities",
-    "Vulnerabilities in password-based login",
-    "Brute-Force",
-    "IP Block",
-    "Turbo Intruder",
-    "Burp Suite",
-  ]
+  - "PortSwigger"
+  - "Authentication Vulnerabilities"
+  - "Vulnerabilities in password-based login"
+  - "Brute-Force"
+  - "IP Block"
+  - "Turbo Intruder"
+  - "Burp Suite"
 ---
 
 # PortSwigger Lab: Broken Brute-Force Protection, IP Block

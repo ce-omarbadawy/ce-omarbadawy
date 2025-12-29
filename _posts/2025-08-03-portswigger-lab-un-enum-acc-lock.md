@@ -4,15 +4,13 @@ title: "PortSwigger Lab: Username enumeration via account lock"
 date: 2025-08-03
 categories: ["PortSwigger", "Authentication Vulnerabilities"]
 tags:
-  [
-    "PortSwigger",
-    "Authentication Vulnerabilities",
-    "Vulnerabilities in password-based login",
-    "Username Enumeration",
-    "Bruteforce",
-    "Turbo Intruder",
-    "Burp Suite",
-  ]
+  - "PortSwigger"
+  - "Authentication Vulnerabilities"
+  - "Vulnerabilities in password-based login"
+  - "Username Enumeration"
+  - "Bruteforce"
+  - "Turbo Intruder"
+  - "Burp Suite"
 ---
 
 ## PortSwigger Lab: Username enumeration via account lock

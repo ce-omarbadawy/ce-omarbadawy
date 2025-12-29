@@ -1,16 +1,14 @@
 ---
 layout: post
 title: "CyberDefenders Lab: PoisonedCredentials"
-date: 2025-08-26
+date: 2025-07-28
 categories: ["CyberDefenders", "Practice", "SOC Analyst Tier 1", "Level 1"]
 tags:
-  [
-    "CyberDefenders",
-    "Network Forensics",
-    "Credential Access",
-    "Collection",
-    "Wireshark",
-  ]
+  - "CyberDefenders"
+  - "Network Forensics"
+  - "Credential Access"
+  - "Collection"
+  - "Wireshark"
 ---
 
 ## PoisonedCredentials Lab at CyberDefenders

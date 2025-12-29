@@ -1,18 +1,16 @@
 ---
 layout: post
 title: "PortSwigger Lab: Username enumeration via different responses"
-date: 2025-08-01
+date: 2025-07-30
 categories: ["PortSwigger", "Authentication Vulnerabilities"]
 tags:
-	[
-		"PortSwigger",
-		"Authentication Vulnerabilities",
-		"Vulnerabilities in password-based login",
-		"Username Enumeration",
-		"Brute Force",
-		"Turbo Intruder",
-		"Burp Suite",
-	]
+  - "PortSwigger"
+  - "Authentication Vulnerabilities"
+  - "Vulnerabilities in password-based login"
+  - "Username Enumeration"
+  - "Brute Force"
+  - "Turbo Intruder"
+  - "Burp Suite"
 ---
 
 # PortSwigger Lab: Username Enumeration via Different Responses

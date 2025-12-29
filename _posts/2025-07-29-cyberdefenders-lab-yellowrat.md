@@ -1,9 +1,12 @@
 ---
 layout: post
 title: "CyberDefenders Lab: Yellow RAT"
-date: 2025-08-26
+date: 2025-07-29
 categories: ["CyberDefenders", "Practice", "SOC Analyst Tier 1", "Level 1"]
-tags: ["CyberDefenders", "Treat Intel", "VirusTotal"]
+tags:
+  - "CyberDefenders"
+  - "Treat Intel"
+  - "VirusTotal"
 ---
 
 ## Yellow RAT Lab at CyberDefenders

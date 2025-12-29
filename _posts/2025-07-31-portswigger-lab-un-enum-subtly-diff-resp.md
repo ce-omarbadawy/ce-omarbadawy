@@ -4,14 +4,12 @@ title: "PortSwigger Lab: Username enumeration via subtly different responses"
 date: 2025-07-31
 categories: ["PortSwigger", "Authentication Vulnerabilities"]
 tags:
-	[
-		"PortSwigger",
-		"Authentication Vulnerabilities",
-		"Vulnerabilities in password-based login",
-		"Username Enumeration",
-		"Brute Force",
-		"Burp Suite",
-	]
+  - "PortSwigger"
+  - "Authentication Vulnerabilities"
+  - "Vulnerabilities in password-based login"
+  - "Username Enumeration"
+  - "Brute Force"
+  - "Burp Suite"
 ---
 
 # PortSwigger Lab: Username Enumeration via Subtly Different Responses

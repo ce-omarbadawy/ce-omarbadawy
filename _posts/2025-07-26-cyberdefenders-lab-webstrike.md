@@ -4,16 +4,14 @@ title: "CyberDefenders Lab: WebStrike"
 date: 2025-07-26
 categories: ["CyberDefenders", "Practice", "SOC Analyst Tier 1", "Level 1"]
 tags:
-  [
-    "CyberDefenders",
-    "Network Forensics",
-    "Initial Access",
-    "Execution",
-    "Persistence",
-    "Command and Control",
-    "Exfiltration",
-    "Wireshark",
-  ]
+  - "CyberDefenders"
+  - "Network Forensics"
+  - "Initial Access"
+  - "Execution"
+  - "Persistence"
+  - "Command and Control"
+  - "Exfiltration"
+  - "Wireshark"
 ---
 
 ## First Lab: WebStrike at CyberDefenders
