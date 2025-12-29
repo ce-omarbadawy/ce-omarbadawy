@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "First Lab: WebStrike at CyberDefenders"
+title: "CyberDefenders Lab: WebStrike"
 date: 2025-07-26
-categories: ["Practice", "SOC Analyst Tier 1", "Level 1"]
+categories: ["CyberDefenders", "Practice", "SOC Analyst Tier 1", "Level 1"]
 tags:
   [
+    "CyberDefenders",
     "Network Forensics",
     "Initial Access",
     "Execution",
@@ -12,7 +13,6 @@ tags:
     "Command and Control",
     "Exfiltration",
     "Wireshark",
-    "CyberDefenders",
   ]
 ---
 

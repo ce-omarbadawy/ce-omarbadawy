@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Second Lab: Oski Malware at CyberDefenders"
+title: "CyberDefenders Lab: Oski"
 date: 2025-07-27
-categories: ["Practice", "Threat Intel", "SOC Analyst Tier 1", "Level 1"]
+categories: ["CyberDefenders", "Practice", "SOC Analyst Tier 1", "Level 1"]
 tags:
   [
+    "CyberDefenders",
     "Threat Intel",
-    "Malware Analysis",
     "Initial Access",
     "Execution",
     "Defence Evasion",
@@ -15,7 +15,6 @@ tags:
     "Exfiltration",
     "VirusTotal",
     "Any.run",
-    "CyberDefenders",
   ]
 ---
 

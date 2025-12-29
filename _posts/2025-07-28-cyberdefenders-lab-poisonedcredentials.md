@@ -1,19 +1,15 @@
 ---
 layout: post
-title: "Third Lab: PoisonedCredentials Lab at CyberDefenders"
+title: "CyberDefenders Lab: PoisonedCredentials"
 date: 2025-08-26
-categories: ["Practice", "Network Forensics", "SOC Analyst Tier 1", "Level 1"]
+categories: ["CyberDefenders", "Practice", "SOC Analyst Tier 1", "Level 1"]
 tags:
   [
+    "CyberDefenders",
     "Network Forensics",
     "Credential Access",
     "Collection",
-    "SMB",
-    "NTLM",
-    "LLMNR",
-    "NBT-NS",
     "Wireshark",
-    "CyberDefenders",
   ]
 ---
 
