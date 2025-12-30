@@ -20,8 +20,7 @@ tags:
 - [Lab Setup and Tools](#lab-setup-and-tools)
 - [What's the login info?](#main-question)
 - [Solution Steps](#solution)
-- [Key Takeaways](#key-takeaways)
-- [What I'd Do Next](#what-id-do-next)
+- [What I'd Do Next (Blue Team)](#what-id-do-next)
 
 # Overview / Goal
 
@@ -53,9 +52,9 @@ The response said:
 
 ---
 
-## What's the Login Info? {#main-question}
+# What's the Login Info? {#main-question}
 
-### Solution Steps {#solution}
+## Solution Steps {#solution}
 
 **1) Enumerate usernames**
 
@@ -99,8 +98,6 @@ Account page loaded. Lab solved 😁
 
 ---
 
-# What I'd Do Next
+# What I'd Do Next (Blue Team) {#what-id-do-next}
 
-For this specific lab, I'd fix the inconsistency by making all failed login responses _exactly_ the same! Status code, message text, and even whitespace.
-
-Tiny UI differences can leak valid usernames without anyone noticing.
+- Just like the last lab, I would normalize error messages, response lengths, and status codes to prevent enumeration.

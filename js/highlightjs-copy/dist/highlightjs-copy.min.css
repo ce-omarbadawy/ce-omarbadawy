@@ -1,0 +1,79 @@
+.hljs-copy-wrapper {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+.hljs-copy-container {
+  --hljs-theme-padding: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: transform 200ms ease-out;
+}
+.hljs-copy-button {
+  position: relative;
+  margin: calc(var(--hljs-theme-padding) / 2);
+  width: calc(16px + var(--hljs-theme-padding));
+  height: calc(16px + var(--hljs-theme-padding));
+  font-size: 0.8125rem;
+  text-indent: -9999px;
+  color: var(--hljs-theme-color);
+  border-radius: 0.25rem;
+  border: 1px solid;
+  border-color: color-mix(in srgb, var(--hljs-theme-color), transparent 80%);
+  background-color: var(--hljs-theme-background);
+  transition: background-color 200ms ease;
+  overflow: hidden;
+}
+.hljs-copy-button:not([data-copied="true"])::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  background-color: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22currentColor%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%20class=%22icon%20icon-tabler%20icons-tabler-outline%20icon-tabler-copy%22%3E%3Cpath%20stroke=%22none%22%20d=%22M0%200h24v24H0z%22%20fill=%22none%22/%3E%3Cpath%20d=%22M7%207m0%202.667a2.667%202.667%200%200%201%202.667%20-2.667h8.666a2.667%202.667%200%200%201%202.667%202.667v8.666a2.667%202.667%200%200%201%20-2.667%202.667h-8.666a2.667%202.667%200%200%201%20-2.667%20-2.667z%22%20/%3E%3Cpath%20d=%22M4.012%2016.737a2.005%202.005%200%200%201%20-1.012%20-1.737v-10c0%20-1.1%20.9%20-2%202%20-2h10c.75%200%201.158%20.385%201.5%201%22%20/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center center;
+}
+.hljs-copy-button:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--hljs-theme-color),
+    transparent 90%
+  );
+}
+.hljs-copy-button:active {
+  border-color: color-mix(in srgb, var(--hljs-theme-color), transparent 60%);
+}
+.hljs-copy-button[data-copied="true"] {
+  text-indent: 0;
+  width: auto;
+}
+.hljs-copy-container[data-autohide="true"] {
+  transform: translateX(calc(100% + 1.125em));
+}
+.hljs-copy-wrapper:focus-within .hljs-copy-container {
+  transition: none;
+  transform: translateX(0);
+}
+.hljs-copy-wrapper:hover .hljs-copy-container {
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion) {
+  .hljs-copy-button {
+    transition: none;
+  }
+}
+.hljs-copy-alert {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

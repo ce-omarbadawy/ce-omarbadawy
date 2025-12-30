@@ -21,8 +21,7 @@ tags:
 - [Lab Setup and Tools](#lab-setup-and-tools)
 - [What's the login info?](#main-question)
 - [Solution Steps](#solution)
-- [Key Takeaways](#key-takeaways)
-- [What I'd Do Next](#what-id-do-next)
+- [What I'd Do Next (Blue Team)](#what-id-do-next)
 
 # Overview / Goal
 
@@ -38,20 +37,21 @@ Wordlists provided by PortSwigger:
 - Burp + Firefox + FoxyProxy
 - Turbo Intruder Extension
 
+---
+
 Capture a failing login to get the exact POST. Example captured request:
 
 ```http
 POST /login HTTP/2
 Content-Type: application/x-www-form-urlencoded
 username=FAKE&password=FAKE
-
 ```
 
 Response: "Invalid username" for most attempts.
 
-## What's the Login Info? {#main-question}
+# What's the Login Info? {#main-question}
 
-### Solution Steps {#solution}
+## Solution Steps {#solution}
 
 **1) Enumerate usernames**
 
@@ -96,13 +96,8 @@ Most requests gave status code `200` but one gave `302` and that was "princess"
 
 ---
 
-# Key Takeaways
+# What I'd Do Next (Blue Team) {#what-id-do-next}
 
-- Tiny differences in response length or message text allow username enumeration.
-- Turbo Intruder is the right tool for this kind of high-rate testing when you have community edition. 😅
-
----
-
-# What I'd Do Next
-
-- There is a lot I would've done differently, but to be specific for THIS lab only, I would normalize error messages and response lengths to prevent enumeration.
+- There is a lot I would've done differently, but to be specific for THIS lab only, I would normalize error messages, response lengths, and status codes to prevent enumeration.
+- Give an absolutely generic feedback that doesn't help the attack in any way.
+- Implement Rate Limiting.

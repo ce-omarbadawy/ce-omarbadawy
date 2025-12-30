@@ -21,12 +21,11 @@ tags:
 - [Lab Setup and Tools](#lab-setup-and-tools)
 - [What's the Login Info?](#whats-the-login-info)
   - [Solution Steps](#solution-steps)
-- [Key Takeaways](#key-takeaways)
-- [What I'd Do Next](#what-id-do-next)
+- [Refining the Attack (Red Team)](#refining-the-attack)
 
 ---
 
-## Overview / Goal
+# Overview / Goal
 
 The goal: Enumerate a valid username, brute-force this user's password, then access their account page.
 
@@ -37,25 +36,23 @@ Wordlists provided by PortSwigger:
 - https://portswigger.net/web-security/authentication/auth-lab-usernames
 - https://portswigger.net/web-security/authentication/auth-lab-passwords
 
----
-
-## Lab Setup and Tools
+# Lab Setup and Tools
 
 - Burp Suite + Firefox (through FoxyProxy)
 - Turbo Intruder extension
 
 ---
 
-## What's the Login Info?
+# What's the Login Info?
 
-### Solution Steps
+## Solution Steps
 
 I started by sending a basic login request using fake credentials:
 `FAKE:FAKE`
 
 I repeated the login attempt several times to see how the application reacted. Nothing changed... the response always said
 
-```text
+```plaintext
 "Invalid username or password."
 ```
 
@@ -63,7 +60,7 @@ That told me something important.
 
 If the application locks accounts only when the username is valid, then brute-forcing usernames should reveal which one behaves differently.
 
-### Step 1: Username Enumeration via Account Lock
+## Step 1: Username Enumeration via Account Lock
 
 I sent the request to Turbo Intruder and set it up so that:
 
@@ -100,7 +97,7 @@ So now we know the valid account.
 
 ---
 
-### Step 2: Brute-Forcing the Password
+## Step 2: Brute-Forcing the Password
 
 Next, I reused the request but this time fixed the username and brute-forced the password list.
 
@@ -113,7 +110,6 @@ def queueRequests(target, wordlists):
                            )
     for password in open('/home/kali/pw'):
         engine.queue(target.req, password.rstrip())
-
 def handleResponse(req, interesting):
     if req.status != 404:
         table.add(req)
@@ -133,17 +129,8 @@ and the lab was solved!
 
 ---
 
-## Key Takeaways
+# What I'd Do Next (Blue Team) {#what-id-do-next}
 
-Account lock mechanisms can leak information. If an application only locks real users, then the lock itself becomes a vulnerability for username enumeration.
-
----
-
-## What I'd Do Next
-
-To prevent this:
-
-- Apply identical lockout behaviour for all usernames
-- Avoid revealing different responses for valid vs invalid accounts
-- Rate-limit at the IP + account level
-- Consider introducing uniform delays across all login attempts
+- If non-existent user is attempted 5 times, the server should respond with the same "Account Locked" message and delay as it would for a real user.
+- Account locking is often seen as a Denial of Service (DoS). I'd prefer to throttle the source IP or trigger a CAPTCHA after 3 failed attempts rather than locking the user out entirely, which protects the user's availability while slowing down the attacker.
+- Instead of a hard lock that requires a timer or admin reset, I'd transition the account into a "Step-up Auth" state. If the password is correct but the account is "locked," the server should immediately demand an MFA code to prove identity.

@@ -21,8 +21,7 @@ tags:
 - [Lab Setup and Tools](#lab-setup-and-tools)
 - [What's the login info?](#main-question)
   - [Solution Steps](#solution)
-- [Key Takeaways](#key-takeaways)
-- [What I'd Do Next](#what-id-do-next)
+- [What I'd Do Next (Blue Team)](#what-id-do-next)
 
 # Overview / Goal
 
@@ -45,6 +44,8 @@ Before going into the lab I could guess that I'll have to brute-force the Userna
 
 - Burp Suite + Firefox (through FoxyProxy)
 - Turbo Intruder extension
+
+---
 
 # What's the Login Info? {#main-question}
 
@@ -102,7 +103,6 @@ def queueRequests(target, wordlists):
         engine.queue(target.req, x)
     for word in open('/home/meow/un'):
         engine.queue(target.req, word.rstrip())
-
 def handleResponse(req, interesting):
     table.add(req)
 ```
@@ -175,16 +175,10 @@ And it worked! Lab solved 😁
 
 ---
 
-# Key Takeaways
-
-Timing attacks are sneaky! Even when you think you've secured everything by normalizing error messages and response lengths, the time it takes to process requests can still leak information.
-
-The server was taking longer for valid usernames because it was actually processing the password hash comparison, while for invalid usernames it could return immediately.
-
-# What I'd Do Next
+# What I'd Do Next (Blue Team) {#what-id-do-next}
 
 To fix this vulnerability, I'd make sure the server takes exactly the same amount of time for every login attempt, regardless of whether the username exists or not. Maybe I could:
 
-- Add artificial delays to match the worst-case processing time.
-- Maybe process dummy password hashes for non-existent users?
-- Implement proper rate limiting that can't be bypassed with simple header tricks!
+- Perform a "dummy" password hash calculation to mimic the delay of a real user check.
+- Configure the load balancer/WAF to ignore user-supplied IP headers for rate-limiting purposes and instead use the actual connecting socket IP or a secure, provider-verified header.
+- I could use a small amount of random "jitter" (delay) to every login response.

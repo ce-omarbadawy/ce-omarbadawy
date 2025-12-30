@@ -53,11 +53,6 @@
   <link
     rel="stylesheet"
     type="text/css"
-    href="{{ site.baseurl }}/css/theme-toggle.css"
-  />
-  <link
-    rel="stylesheet"
-    type="text/css"
     href="{{ site.baseurl }}/css/matrix.css"
   />
   <link
@@ -87,6 +82,13 @@
   />
   <script src="{{ site.baseurl }}/js/highlightjs/highlight.js"></script>
 
+  <!-- highlightjs-copy plugin -->
+  <script src="{{ site.baseurl }}/js/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="{{ site.baseurl }}/js/highlightjs-copy/dist/highlightjs-copy.min.css"
+  />
+
   <script>
     hljs.configure({
       languages: [
@@ -102,6 +104,12 @@
         "javascript",
       ],
     });
+    hljs.addPlugin(
+      new CopyButtonPlugin({
+        autohide: false,
+        callback: (text, el) => console.log("Copied to clipboard", text),
+      })
+    );
     hljs.highlightAll();
   </script>
   <!-- end highlight.js support -->

