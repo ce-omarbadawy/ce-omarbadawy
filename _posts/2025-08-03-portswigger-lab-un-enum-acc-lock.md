@@ -21,7 +21,7 @@ tags:
 - [Lab Setup and Tools](#lab-setup-and-tools)
 - [What's the Login Info?](#whats-the-login-info)
   - [Solution Steps](#solution-steps)
-- [Refining the Attack (Red Team)](#refining-the-attack)
+- [What I'd Do Next (Blue Team)](#what-id-do-next)
 
 ---
 
