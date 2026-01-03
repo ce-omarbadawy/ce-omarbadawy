@@ -2,7 +2,12 @@
 layout: post
 title: "PortSwigger Lab: Username enumeration via different responses"
 date: 2025-07-30
-categories: ["PortSwigger", "Authentication Vulnerabilities"]
+categories:
+  [
+    "PortSwigger",
+    "Authentication Vulnerabilities",
+    "Vulnerabilities in password-based login",
+  ]
 tags:
   - "PortSwigger"
   - "Authentication Vulnerabilities"
@@ -19,11 +24,11 @@ tags:
 
 - [Overview / Goal](#overview--goal)
 - [Lab Setup and Tools](#lab-setup-and-tools)
-- [What's the login info?](#main-question)
-- [Solution Steps](#solution)
+- [What's the login info?](#whats-the-login-info)
+  - [Solution Steps](#solution)
 - [What I'd Do Next (Blue Team)](#what-id-do-next)
 
-# Overview / Goal
+# Overview / Goal {#overview--goal}
 
 This lab is simple: enumerate a valid username, brute-force its password, then access that account page. So, **what are the login credentials?**
 
@@ -32,7 +37,7 @@ Wordlists provided by PortSwigger:
 - https://portswigger.net/web-security/authentication/auth-lab-usernames
 - https://portswigger.net/web-security/authentication/auth-lab-passwords
 
-# Lab Setup and Tools
+# Lab Setup and Tools {#lab-setup-and-tools-used}
 
 - Burp + Firefox + FoxyProxy
 - Turbo Intruder Extension
@@ -49,7 +54,7 @@ username=FAKE&password=FAKE
 
 Response: "Invalid username" for most attempts.
 
-# What's the Login Info? {#main-question}
+# What's the Login Info? {#whats-the-login-info}
 
 ## Solution Steps {#solution}
 

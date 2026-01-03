@@ -17,7 +17,7 @@ tags:
 
 - [Overview / Goal](#overview--goal)
 - [Lab Setup and Tools Used](#lab-setup-and-tools-used)
-  - [Q1: Mistyped Query from 192.168.232.162](#q1-mistyped-query-from-192168232162)
+  - [Q1: Mistyped Query from 192.168.232.162](#q1-mistyped-query)
   - [Q2: Rogue Machine IP Address](#q2-rogue-machine-ip-address)
   - [Q3: Second Affected Machine](#q3-second-affected-machine)
   - [Q4: Compromised Username](#q4-compromised-username)
@@ -25,7 +25,7 @@ tags:
 - [What I'd Do Next](#what-id-do-next)
 - [Try This Lab Yourself](#try-this-lab-yourself)
 
-# Overview / Goal
+# Overview / Goal {#overview--goal}
 
 > Your organization's security team has detected a surge in suspicious network activity. There are concerns that LLMNR (Link-Local Multicast Name Resolution) and NBT-NS (NetBIOS Name Service) poisoning attacks may be occurring within your network. These attacks are known for exploiting these protocols to intercept network traffic and potentially compromise user credentials. Your task is to investigate the network logs and examine captured network traffic.
 
@@ -38,7 +38,7 @@ Okay, at first I didn't even know what is LLMNR or NBT-NS... Nothing a bit of re
 
 This tells me the attack is very old school but I guess still viable in sloppy networks? From my research on the topic, I get that attackers love those because ANY host on the subnet can reply. Creds are sent in NTLM challenge/response, the attacker fakes being the server and snatches the NTLMv2 hashes. If creds are caught, we should see NTLMv2 auth blobs in SMB/HTTP after poisoned resolution. Once hackers steal the hashes they can try to crack it offline or possibly relay it?
 
-# Lab Setup and Tools Used
+# Lab Setup and Tools Used {#lab-setup-and-tools-used}
 
 Artifact provided: a PCAP file with suspicious network traffic.
 
@@ -49,7 +49,7 @@ Tools used:
 
 ---
 
-## Q1: Mistyped Query from 192.168.232.162 {#q1-mistyped-query-from-192168232162}
+## Q1: Mistyped Query from 192.168.232.162 {#q1-mistyped-query}
 
 I filtered on:
 
@@ -130,6 +130,6 @@ AccountingPC.cybercactus.local
 - Add a Group Policy to disable **LLMNR and NBT-NS** !!!
 - Enforce SMB signing to prevent relay.
 
-# Try This Lab Yourself
+# Try This Lab Yourself {#try-this-lab-yourself}
 
 🔗 Lab Link: [CyberDefenders: PoisonedCredentials](https://cyberdefenders.org/blueteam-ctf-challenges/poisonedcredentials/)

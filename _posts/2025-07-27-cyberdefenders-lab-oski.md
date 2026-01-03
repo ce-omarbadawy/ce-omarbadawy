@@ -33,7 +33,7 @@ tags:
 - [Refining the Attack (Red Team)](#refining-the-attack)
 - [Try This Lab Yourself](#try-this-lab-yourself)
 
-# Overview / Goal
+# Overview / Goal {#overview--goal}
 
 > The accountant at the company received an email titled "Urgent New Order" from a client late in the afternoon. When he attempted to access the attached invoice, he discovered it contained false order information. Subsequently, the SIEM solution generated an alert regarding downloading a potentially malicious file. Upon initial investigation, it was found that the PPT file might be responsible for this download. Could you please conduct a detailed examination of this file?
 
@@ -41,7 +41,7 @@ The accountant was clearly tired in the late afternoon after a heavy lunch and d
 
 The goal: Run threat intel lookups and sandbox analysis to figure out what this file does, who it talks to, and how it behaves.
 
-# Lab Setup and Tools Used
+# Lab Setup and Tools Used {#lab-setup-and-tools-used}
 
 Artifacts provided: the MD5 hash of the suspicious file:
 
@@ -172,6 +172,6 @@ So the malware deletes itself **5 seconds** after finishing exfiltration.
 - Instead of dropping a suspicious exe I'd attempt to execute the cerds stealing with an in-memory solution or a powershell script or possible dll injection to avoid leaving a file that I'll have to delete later.
 - Instead of a PPT file maybe I'd use a Password Protected ZIP to avoid email scanners since they can't peek in an encrypted file.
 
-# Try This Lab Yourself
+# Try This Lab Yourself {#try-this-lab-yourself}
 
 🔗 Lab Link: [CyberDefenders: Oski Lab](https://cyberdefenders.org/blueteam-ctf-challenges/oski/)

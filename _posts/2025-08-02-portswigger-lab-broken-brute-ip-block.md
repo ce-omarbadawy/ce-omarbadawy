@@ -2,7 +2,12 @@
 layout: post
 title: "PortSwigger Lab: Broken Brute-Force Protection, IP Block"
 date: 2025-08-02
-categories: ["PortSwigger", "Authentication Vulnerabilities"]
+categories:
+  [
+    "PortSwigger",
+    "Authentication Vulnerabilities",
+    "Vulnerabilities in password-based login",
+  ]
 tags:
   - "PortSwigger"
   - "Authentication Vulnerabilities"
@@ -19,11 +24,11 @@ tags:
 
 - [Overview / Goal](#overview--goal)
 - [Lab Setup and Tools](#lab-setup-and-tools)
-- [What's the password?](#main-question)
+- [What's the password?](#whats-the-login-info)
   - [Solution Steps](#solution)
 - [What I'd Do Next (Blue Team)](#what-id-do-next)
 
-# Overview / Goal
+# Overview / Goal {#overview--goal}
 
 "This lab is vulnerable due to a logic flaw in its password brute-force protection. To solve the lab, brute-force the victim's password, then log in and access their account page."
 
@@ -36,14 +41,14 @@ Wordlist provided by PortSwigger:
 
 This lab introduces IP-based brute-force protection. After too many failed attempts, the IP gets temporarily blocked. The challenge is to find the logic flaw that allows bypassing this protection.
 
-# Lab Setup and Tools
+# Lab Setup and Tools {#lab-setup-and-tools-used}
 
 - Burp Suite + Firefox (through FoxyProxy)
 - Turbo Intruder extension
 
 ---
 
-# What's the Password? {#main-question}
+# What's the Password? {#whats-the-login-info}
 
 ## Solution Steps {#solution}
 

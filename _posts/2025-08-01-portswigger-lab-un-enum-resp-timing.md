@@ -2,7 +2,12 @@
 layout: post
 title: "PortSwigger Lab: Username enumeration via response timing"
 date: 2025-08-01
-categories: ["PortSwigger", "Authentication Vulnerabilities"]
+categories:
+  [
+    "PortSwigger",
+    "Authentication Vulnerabilities",
+    "Vulnerabilities in password-based login",
+  ]
 tags:
   - "PortSwigger"
   - "Authentication Vulnerabilities"
@@ -19,11 +24,11 @@ tags:
 
 - [Overview / Goal](#overview--goal)
 - [Lab Setup and Tools](#lab-setup-and-tools)
-- [What's the login info?](#main-question)
+- [What's the login info?](#whats-the-login-info)
   - [Solution Steps](#solution)
 - [What I'd Do Next (Blue Team)](#what-id-do-next)
 
-# Overview / Goal
+# Overview / Goal {#overview--goal}
 
 "This lab is vulnerable to username enumeration using its response times. To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page."
 
@@ -40,14 +45,14 @@ The first lab in this category was username enumeration based on the response **
 
 Before going into the lab I could guess that I'll have to brute-force the Username wordlist with an EXTREMELY long static password to see which username gives the slowest response time. Based on that I'll be able to tell which exists right?
 
-# Lab Setup and Tools
+# Lab Setup and Tools {#lab-setup-and-tools-used}
 
 - Burp Suite + Firefox (through FoxyProxy)
 - Turbo Intruder extension
 
 ---
 
-# What's the Login Info? {#main-question}
+# What's the Login Info? {#whats-the-login-info}
 
 ## Solution Steps {#solution}
 
@@ -115,7 +120,7 @@ LUCKILY this lab is vulnerable to simple little HTTP header trick called `X-Forw
 
 > "With **header manipulation**, hackers tamper with HTTP headers like `X-Forwarded-For` or `Referer` to make requests look like they're from different sources. If your rate limit trusts these headers, attackers can fake them to appear as new users or devices, bypassing restrictions. It's a low-effort trick that exploits systems that don't double-check header data."
 >
-> iHa089. (2023). _How hackers bypass rate limits_. iHa089 Security Blog. https://iha089.org/how-hackers-bypass-rate-limits/
+> iHa089. (2023). How hackers bypass rate limits. iHa089 Security Blog. https://iha089.org/how-hackers-bypass-rate-limits/
 
 So, `X-Forwarded-For` can be used to bypass the rate block. For example, if I make a request with `X-Forwarded-For: 1` a few times, I'll get rate blocked again. But! If I make `X-Forwarded-For` change number to `2`, then `3`, then `4` and so on for every few attempts. I'll never get rate blocked!
 

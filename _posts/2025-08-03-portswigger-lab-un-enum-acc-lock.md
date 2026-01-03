@@ -2,7 +2,12 @@
 layout: post
 title: "PortSwigger Lab: Username enumeration via account lock"
 date: 2025-08-03
-categories: ["PortSwigger", "Authentication Vulnerabilities"]
+categories:
+  [
+    "PortSwigger",
+    "Authentication Vulnerabilities",
+    "Vulnerabilities in password-based login",
+  ]
 tags:
   - "PortSwigger"
   - "Authentication Vulnerabilities"
@@ -13,9 +18,9 @@ tags:
   - "Burp Suite"
 ---
 
-## PortSwigger Lab: Username enumeration via account lock
+# PortSwigger Lab: Username enumeration via account lock
 
-## Table of Contents
+# Table of Contents
 
 - [Overview / Goal](#overview--goal)
 - [Lab Setup and Tools](#lab-setup-and-tools)
@@ -25,7 +30,7 @@ tags:
 
 ---
 
-# Overview / Goal
+# Overview / Goal {#overview--goal}
 
 The goal: Enumerate a valid username, brute-force this user's password, then access their account page.
 
@@ -36,14 +41,14 @@ Wordlists provided by PortSwigger:
 - https://portswigger.net/web-security/authentication/auth-lab-usernames
 - https://portswigger.net/web-security/authentication/auth-lab-passwords
 
-# Lab Setup and Tools
+# Lab Setup and Tools {#lab-setup-and-tools-used}
 
 - Burp Suite + Firefox (through FoxyProxy)
 - Turbo Intruder extension
 
 ---
 
-# What's the Login Info?
+# What's the Login Info? {#whats-the-login-info}
 
 ## Solution Steps
 
@@ -60,7 +65,7 @@ That told me something important.
 
 If the application locks accounts only when the username is valid, then brute-forcing usernames should reveal which one behaves differently.
 
-## Step 1: Username Enumeration via Account Lock
+**1) Username Enumeration via Account Lock**
 
 I sent the request to Turbo Intruder and set it up so that:
 
@@ -97,7 +102,7 @@ So now we know the valid account.
 
 ---
 
-## Step 2: Brute-Forcing the Password
+**2) Brute-Forcing the Password**
 
 Next, I reused the request but this time fixed the username and brute-forced the password list.
 

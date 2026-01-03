@@ -26,7 +26,7 @@ tags:
 - [Refining the Attack (Red Team)](#refining-the-attack)
 - [Try This Lab Yourself](#try-this-lab-yourself)
 
-# Overview / Goal
+# Overview / Goal {#overview--goal}
 
 > During a regular IT security check at GlobalTech Industries, abnormal network traffic was detected from multiple workstations. Upon initial investigation, it was discovered that certain employees' search queries were being redirected to unfamiliar websites. This discovery raised concerns and prompted a more thorough investigation. Your task is to investigate this incident and gather as much information as possible.
 
@@ -34,7 +34,7 @@ That's usually a big red flag 😬.
 
 So, the goal here is to figure out what malware is involved and how it operates.
 
-# Lab Setup and Tools Used
+# Lab Setup and Tools Used {#lab-setup-and-tools-used}
 
 Artifact provided: a malware hash.
 
@@ -51,7 +51,7 @@ Tools used:
 
 ## Q1: Malware Family {#q1-malware-family}
 
-### Initial Analysis
+**Initial Analysis**
 
 The first thing I did was drop the hash into VirusTotal.
 
@@ -147,6 +147,6 @@ In the **behaviour** tab on VirusTotal, under **Network Communication**, I spott
 - Add environmental checks for virtual machines for the malware to sleep or delete itself instead of reaching out to C2.
 - Encrypt stolen data before sending it over.
 
-# Try This Lab Yourself
+# Try This Lab Yourself {#try-this-lab-yourself}
 
 Lab Link: [https://cyberdefenders.org/blueteam-ctf-challenges/yellow-rat/](https://cyberdefenders.org/blueteam-ctf-challenges/yellow-rat/)
