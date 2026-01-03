@@ -11,7 +11,7 @@ linkedin_username: "omar-m-badawy"
 theme: "minima"
 
 # Base URL for GitHub Pages project site
-baseurl: "/ce-omarbadawy"
+baseurl: "/blog"
 
 rss: rss
 
