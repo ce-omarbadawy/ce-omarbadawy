@@ -132,4 +132,4 @@ AccountingPC.cybercactus.local
 
 # Try This Lab Yourself {#try-this-lab-yourself}
 
-🔗 Lab Link: [CyberDefenders: PoisonedCredentials](https://cyberdefenders.org/blueteam-ctf-challenges/poisonedcredentials/)
+🔗 Lab Link: [CyberDefenders: PoisonedCredentials](https://cyberdefenders.org/blueteam-ctf-challenges/poisonedcredentials/){:target="\_blank"}

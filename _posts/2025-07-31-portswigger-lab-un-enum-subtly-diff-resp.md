@@ -26,10 +26,11 @@ tags:
 - [What's the login info?](#whats-the-login-info)
   - [Solution Steps](#solution)
 - [What I'd Do Next (Blue Team)](#what-id-do-next)
+- [Try This Lab Yourself](#try-this-lab-yourself)
 
 # Overview / Goal {#overview--goal}
 
-"This lab is subtly vulnerable to username enumeration and password brute-force attacks. It has an account with a predictable username and password."
+> "This lab is subtly vulnerable to username enumeration and password brute-force attacks. It has an account with a predictable username and password."
 
 So again, same mission: **find the correct login credentials**.
 
@@ -77,8 +78,6 @@ Every request looked the same… except one. The username **`applications`** .
 
 **Username:** `applications` ✅
 
----
-
 **2) Brute-force password**
 
 Next, I removed the payload from the username and set it statically to `applications`.
@@ -90,8 +89,6 @@ Started round two of the attack.
 Again, every request returned **Status Code 200** but one. And instead it gave **Status Code 302** . and that was for password **`ranger`**.
 
 **Password:** `ranger` ✅
-
----
 
 **3) Verify**
 
@@ -106,3 +103,7 @@ Account page loaded. Lab solved 😁
 # What I'd Do Next (Blue Team) {#what-id-do-next}
 
 - Just like the last lab, I would normalize error messages, response lengths, and status codes to prevent enumeration.
+
+# Try This Lab Yourself {#try-this-lab-yourself}
+
+🔗 Lab Link: [PortSwigger Lab: Username enumeration via subtly different responses](https://portswigger.net/web-security/learning-paths/authentication-vulnerabilities/password-based-vulnerabilities/authentication/password-based/lab-username-enumeration-via-subtly-different-responses){:target="\_blank"}

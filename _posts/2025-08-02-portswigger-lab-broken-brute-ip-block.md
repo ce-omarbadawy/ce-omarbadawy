@@ -12,8 +12,8 @@ tags:
   - "PortSwigger"
   - "Authentication Vulnerabilities"
   - "Vulnerabilities in password-based login"
-  - "Brute-Force"
   - "IP Block"
+  - "Brute-Force"
   - "Turbo Intruder"
   - "Burp Suite"
 ---
@@ -27,6 +27,7 @@ tags:
 - [What's the password?](#whats-the-login-info)
   - [Solution Steps](#solution)
 - [What I'd Do Next (Blue Team)](#what-id-do-next)
+- [Try This Lab Yourself](#try-this-lab-yourself)
 
 # Overview / Goal {#overview--goal}
 
@@ -118,3 +119,7 @@ I manually logged in with carlos:summer and the lab was solved! 🥳
 - Ensure that a successful login for "User A" does not reset the failure counter for "User B".
 - I'd use a better approach. Example: If an IP has 6 failures in an hour, it gets flagged regardless of whether it managed to log in successfully once in the middle of that window.
 - I would configure the WAF to detect "interleaved" login patterns where a single IP is jumping between multiple accounts rapidly. If I see a successful login immediately following a series of failures, I'd flag that session as "High Risk" and force an MFA prompt or an email notification to the user, even if the password was correct.
+
+# Try This Lab Yourself {#try-this-lab-yourself}
+
+🔗 Lab Link: [PortSwigger Lab: Broken Brute-Force Protection, IP Block](https://portswigger.net/web-security/learning-paths/authentication-vulnerabilities/password-based-vulnerabilities/authentication/password-based/lab-broken-bruteforce-protection-ip-block){:target="\_blank"}

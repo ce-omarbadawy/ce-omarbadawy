@@ -27,6 +27,7 @@ tags:
 - [What's the login info?](#whats-the-login-info)
   - [Solution Steps](#solution)
 - [What I'd Do Next (Blue Team)](#what-id-do-next)
+- [Try This Lab Yourself](#try-this-lab-yourself)
 
 # Overview / Goal {#overview--goal}
 
@@ -187,3 +188,7 @@ To fix this vulnerability, I'd make sure the server takes exactly the same amoun
 - Perform a "dummy" password hash calculation to mimic the delay of a real user check.
 - Configure the load balancer/WAF to ignore user-supplied IP headers for rate-limiting purposes and instead use the actual connecting socket IP or a secure, provider-verified header.
 - I could use a small amount of random "jitter" (delay) to every login response.
+
+# Try This Lab Yourself {#try-this-lab-yourself}
+
+🔗 Lab Link: [PortSwigger Lab: Username enumeration via response timing](https://portswigger.net/web-security/learning-paths/authentication-vulnerabilities/password-based-vulnerabilities/authentication/password-based/lab-username-enumeration-via-response-timing){:target="\_blank"}

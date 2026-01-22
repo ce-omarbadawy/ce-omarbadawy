@@ -27,6 +27,7 @@ tags:
 - [What's the Login Info?](#whats-the-login-info)
   - [Solution Steps](#solution-steps)
 - [What I'd Do Next (Blue Team)](#what-id-do-next)
+- [Try This Lab Yourself](#try-this-lab-yourself)
 
 ---
 
@@ -100,8 +101,6 @@ That username was:
 
 So now we know the valid account.
 
----
-
 **2) Brute-Forcing the Password**
 
 Next, I reused the request but this time fixed the username and brute-forced the password list.
@@ -139,3 +138,7 @@ and the lab was solved!
 - If non-existent user is attempted 5 times, the server should respond with the same "Account Locked" message and delay as it would for a real user.
 - Account locking is often seen as a Denial of Service (DoS). I'd prefer to throttle the source IP or trigger a CAPTCHA after 3 failed attempts rather than locking the user out entirely, which protects the user's availability while slowing down the attacker.
 - Instead of a hard lock that requires a timer or admin reset, I'd transition the account into a "Step-up Auth" state. If the password is correct but the account is "locked," the server should immediately demand an MFA code to prove identity.
+
+# Try This Lab Yourself {#try-this-lab-yourself}
+
+🔗 Lab Link: [PortSwigger Lab: Username enumeration via account lock](https://portswigger.net/web-security/learning-paths/authentication-vulnerabilities/password-based-vulnerabilities/authentication/password-based/lab-username-enumeration-via-account-lock){:target="\_blank"}

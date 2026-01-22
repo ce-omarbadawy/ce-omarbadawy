@@ -130,7 +130,6 @@ Looking at the **Process Tree** in Any.run, I saw a child process executing this
 - `timeout /t 5` -> wait 5 seconds.
 - `&` -> command separator.
 - `del /f /q "C:\Users\admin\AppData\Local\Temp\VPN.exe"`
-
   - `/f` = force deletion
   - `/q` = quiet mode
   - deletes the dropped malware (`VPN.exe`).
@@ -174,4 +173,4 @@ So the malware deletes itself **5 seconds** after finishing exfiltration.
 
 # Try This Lab Yourself {#try-this-lab-yourself}
 
-🔗 Lab Link: [CyberDefenders: Oski Lab](https://cyberdefenders.org/blueteam-ctf-challenges/oski/)
+🔗 Lab Link: [CyberDefenders: Oski Lab](https://cyberdefenders.org/blueteam-ctf-challenges/oski/){:target="\_blank"}

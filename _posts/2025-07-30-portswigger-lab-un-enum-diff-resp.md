@@ -27,10 +27,11 @@ tags:
 - [What's the login info?](#whats-the-login-info)
   - [Solution Steps](#solution)
 - [What I'd Do Next (Blue Team)](#what-id-do-next)
+- [Try This Lab Yourself](#try-this-lab-yourself)
 
 # Overview / Goal {#overview--goal}
 
-This lab is simple: enumerate a valid username, brute-force its password, then access that account page. So, **what are the login credentials?**
+> "Enumerate a valid username, brute-force its password, then access that account page."
 
 Wordlists provided by PortSwigger:
 
@@ -106,3 +107,7 @@ Most requests gave status code `200` but one gave `302` and that was "princess"
 - There is a lot I would've done differently, but to be specific for THIS lab only, I would normalize error messages, response lengths, and status codes to prevent enumeration.
 - Give an absolutely generic feedback that doesn't help the attack in any way.
 - Implement Rate Limiting.
+
+# Try This Lab Yourself {#try-this-lab-yourself}
+
+🔗 Lab Link: [PortSwigger Lab: Username enumeration via different responses](https://portswigger.net/web-security/learning-paths/authentication-vulnerabilities/password-based-vulnerabilities/authentication/password-based/lab-username-enumeration-via-different-responses){:target="\_blank"}

@@ -149,4 +149,4 @@ In the **behaviour** tab on VirusTotal, under **Network Communication**, I spott
 
 # Try This Lab Yourself {#try-this-lab-yourself}
 
-Lab Link: [https://cyberdefenders.org/blueteam-ctf-challenges/yellow-rat/](https://cyberdefenders.org/blueteam-ctf-challenges/yellow-rat/)
+Lab Link: [https://cyberdefenders.org/blueteam-ctf-challenges/yellow-rat/](https://cyberdefenders.org/blueteam-ctf-challenges/yellow-rat/){:target="\_blank"}
